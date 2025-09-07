@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "lat": 24.4539,
+    "lng": 54.3773,
+    "country": "United Arab Emirates",
+    "city": "Abu Dhabi",
+    "title": "Technical Lead - Hawkeye Innovations",
+    "period": "2023 — Presente",
+    "description": "Lideré el equipo técnico, definí documentación y configuraciones para box sells. Trabajé con sistemas embebidos y despliegues en la nube."
+  },
+  {
+    "id": 2,
+    "lat": -2.9006,
+    "lng": -79.0047,
+    "country": "Ecuador",
+    "city": "Cuenca",
+    "title": "Operador VAR / Soporte Técnico",
+    "period": "2018 — 2022",
+    "description": "Operé como VAR en eventos deportivos, colaboré en integración de video y desarrollos de software para revisión arbitral."
+  },
+  {
+    "id": 3,
+    "lat": 41.9028,
+    "lng": 12.4964,
+    "country": "Italia",
+    "city": "Roma (meta)",
+    "title": "Objetivo profesional — Europa",
+    "period": "2025 — Futuro",
+    "description": "Busco expandir experiencia en arquitectura de centros de datos y realizar una maestría en Europa (Italia)."
+  },
+  {
+    "id": 4,
+    "lat": 52.5275,
+    "lng": 13.3596,
+    "country": "Germany",
+    "city": "Berlin",
+    "title": "Objetivo profesional — Europa",
+    "period": "2025 — Futuro",
+    "description": "Busco expandir experiencia en arquitectura de centros de datos y realizar una maestría en Europa (Italia)."
+  }
+]
