@@ -4,6 +4,11 @@ import Globe from 'globe.gl';
 export default function GlobeContainer({ experiences, setSelected, globeInstance }) {
   const globeEl = useRef(null);
 
+  const travels = [
+    { startLat: -2.17, startLng: -79.92, endLat: -0.18, endLng: -78.47 }, // GYE → UIO
+    { startLat: -0.18, startLng: -78.47, endLat: 40.42, endLng: -3.70 }  // UIO → MAD
+  ];
+
   useEffect(() => {
     if (!globeEl.current) return;
 
@@ -13,22 +18,33 @@ export default function GlobeContainer({ experiences, setSelected, globeInstance
     if (!globeInstance.current) {
       const g = Globe()(globeEl.current)
         .globeImageUrl('/4_no_ice_clouds_mts_8k.jpg')
-        .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
-        .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
-        .showAtmosphere(true)
+        .bumpImageUrl('/elev_bump_8k.jpg')
+        .showAtmosphere(false)
         .atmosphereColor('#3fa9f5')
         .pointOfView({ lat: 20, lng: 0, altitude: 2.5 })
         .pointsData(experiences)
+        .onPointClick(d => {
+          console.log('Pin clickeado:', d);
+          setSelected(d);
+        })
         .pointLat('lat')
         .pointLng('lng')
         .pointLabel(d => `${d.city}, ${d.country}`)
         .pointColor(() => '#ff7043')
         .pointAltitude(0.02)
-        .pointRadius(0.3)
-        .onPointClick(d => {
-          console.log('Pin clickeado:', d);
-          setSelected(d);
-        });
+        .pointRadius(0.7)
+        .arcsData(travels)
+        .arcStartLat(d => d.startLat)
+        .arcStartLng(d => d.startLng)
+        .arcEndLat(d => d.endLat)
+        .arcEndLng(d => d.endLng)
+        .arcColor(() => ['#d4d4d4ff', '#d4d4d4ff'])
+        .arcAltitude(0.25)
+        .arcStroke(0.25)
+        .arcDashLength(0.3)
+        .arcDashGap(0.25)
+        .arcDashAnimateTime(7000);
+
 
       g.controls().autoRotate = true;
       g.controls().autoRotateSpeed = 0.4;
@@ -42,21 +58,16 @@ export default function GlobeContainer({ experiences, setSelected, globeInstance
 
     // Función para ajustar tamaño del canvas según el contenedor padre
     const resizeGlobe = () => {
-      if (!globeEl.current) return;
+      if (!globeEl.current || !globeInstance.current) return;
       const parent = globeEl.current.parentElement;
       if (!parent) return;
 
       const width = parent.clientWidth;
       const height = parent.clientHeight;
-      const dpr = window.devicePixelRatio || 1;
 
-      // Ajusta el tamaño visual del canvas
-      globeInstance.current.renderer().setSize(width, height, false);
-      // Ajusta la calidad del renderizado
-      globeInstance.current.renderer().setPixelRatio(dpr);
-
-      globeInstance.current.camera().aspect = width / height;
-      globeInstance.current.camera().updateProjectionMatrix();
+      // Usa la API de globe.gl en lugar de manipular directamente el renderer y la cámara
+      globeInstance.current.width(width);
+      globeInstance.current.height(height);
     };
     // Inicial resize
     resizeGlobe();
@@ -73,8 +84,8 @@ export default function GlobeContainer({ experiences, setSelected, globeInstance
   }, [experiences, setSelected, globeInstance]);
 
   return (
-    <div style={{ width: '100%', height: '100%', borderRadius: '12px', overflow: 'hidden' }}>
-      <div ref={globeEl} style={{ width: '100%', height: '100%' }} />
+    <div className="w-full h-full rounded-2xl overflow-hidden">
+      <div ref={globeEl} className="w-full h-full" />
     </div>
   );
 }

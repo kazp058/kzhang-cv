@@ -70,5 +70,4 @@ button:focus-visible {
   display: block;
   border-radius: 12px;
   overflow: hidden;
-  cursor: grab !important;
 }

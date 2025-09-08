@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import GlobeContainer from './GlobeContainer';
 import ExperienceList from './ExperienceList';
 import ExperienceModal from './ExperienceModal';
+import NavHeader from './NavHeader';
 
 const INITIAL_VIEW = { lat: 20, lng: 0, altitude: 2.5 }; // Zoom inicial fijo
 const SELECTED_VIEW_ALTITUDE = 0.75; // Zoom al seleccionar pin/experiencia
@@ -32,9 +33,9 @@ export default function Layout({ experiences, selected, setSelected, globeInstan
     if (globeInstance.current && lastSelectedRef.current) {
       globeInstance.current.controls().autoRotate = true;
       globeInstance.current.pointOfView(
-        { 
-          lat: INITIAL_VIEW.lat, 
-          lng: lastSelectedRef.current.lng, 
+        {
+          lat: INITIAL_VIEW.lat,
+          lng: lastSelectedRef.current.lng,
           altitude: INITIAL_VIEW.altitude // zoom out pero sobre el mismo punto
         },
         1200
@@ -44,39 +45,35 @@ export default function Layout({ experiences, selected, setSelected, globeInstan
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white p-4">
-      <header className="max-w-6xl mx-auto mb-4">
-        <h1 className="text-3xl font-semibold">Kevin — Hoja de vida interactiva</h1>
-        <p className="text-slate-300 mt-1">
-          Mapa 3D con pines: haz clic en cualquier pin para ver lo que hice en esa ciudad/país.
-        </p>
-      </header>
-      <main className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4 min-h-[70vh]">
-        <section className="lg:col-span-2 bg-slate-900/40 rounded-2xl p-4 shadow-lg flex flex-col h-full min-h-[400px]">
-          <div className="flex-1 h-full">
-            <GlobeContainer experiences={experiences} setSelected={handleSelect} globeInstance={globeInstance} />
-          </div>
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+      <NavHeader />
+
+
+      <main className="flex flex-col flex-1 w-full">
+        <section className="flex-1 w-full bg-slate-900/40 rounded-2xl p-4 shadow-lg">
+          <GlobeContainer
+            experiences={experiences}
+            setSelected={handleSelect}
+            globeInstance={globeInstance}
+          />
         </section>
-        <aside className="lg:col-span-1 bg-slate-900/30 rounded-2xl p-4 shadow-inner">
-          <ExperienceList experiences={experiences} setSelected={handleSelect} globeInstance={globeInstance} />
-        </aside>
+
+        <section className="h-32 w-full mt-4 bg-slate-900/30 rounded-2xl p-4 shadow-inner">
+          <p className="text-center text-slate-400">[Aquí irá la timeline]</p>
+        </section>
       </main>
+
       {selected && (
         <ExperienceModal
-          selected={selected}
-          onClose={handleClose}
+          experience={selected}
+          onClose={() => handleClose()}
         />
       )}
 
+      {/* Footer */}
       <footer className="max-w-6xl mx-auto mt-8 text-slate-400 text-sm">
         Hecho con ❤️
       </footer>
-
-      <style jsx global>{`
-        canvas[data-engine="three.js"] {
-          cursor: grab !important;
-        }
-      `}</style>
     </div>
   );
 }
