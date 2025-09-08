@@ -12,7 +12,7 @@ export default function GlobeContainer({ experiences, setSelected, globeInstance
     // Solo inicializa si no existe
     if (!globeInstance.current) {
       const g = Globe()(globeEl.current)
-        .globeImageUrl('../public/4_no_ice_clouds_mts_8k.jpg')
+        .globeImageUrl('/4_no_ice_clouds_mts_8k.jpg')
         .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
         .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
         .showAtmosphere(true)
