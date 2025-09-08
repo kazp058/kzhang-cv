@@ -7,10 +7,12 @@ export default function GlobeContainer({ experiences, setSelected, globeInstance
   useEffect(() => {
     if (!globeEl.current) return;
 
+    console.log('Experiences para Globe:', experiences);
+
     // Solo inicializa si no existe
     if (!globeInstance.current) {
       const g = Globe()(globeEl.current)
-        .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-day.jpg')
+        .globeImageUrl('../public/4_no_ice_clouds_mts_8k.jpg')
         .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
         .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
         .showAtmosphere(true)
@@ -24,6 +26,7 @@ export default function GlobeContainer({ experiences, setSelected, globeInstance
         .pointAltitude(0.02)
         .pointRadius(0.3)
         .onPointClick(d => {
+          console.log('Pin clickeado:', d);
           setSelected(d);
         });
 
@@ -31,6 +34,7 @@ export default function GlobeContainer({ experiences, setSelected, globeInstance
       g.controls().autoRotateSpeed = 0.4;
 
       globeInstance.current = g;
+      console.log('Globe creado:', globeInstance.current);
     } else {
       // Si ya existe, solo actualiza los datos
       globeInstance.current.pointsData(experiences);
@@ -65,7 +69,6 @@ export default function GlobeContainer({ experiences, setSelected, globeInstance
     return () => {
       ro.disconnect();
       window.removeEventListener('resize', resizeGlobe);
-      globeInstance.current = null;
     };
   }, [experiences, setSelected, globeInstance]);
 

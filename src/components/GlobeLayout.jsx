@@ -4,33 +4,41 @@ import ExperienceList from './ExperienceList';
 import ExperienceModal from './ExperienceModal';
 
 const INITIAL_VIEW = { lat: 20, lng: 0, altitude: 2.5 }; // Zoom inicial fijo
-const SELECTED_VIEW_ALTITUDE = 1.4; // Zoom al seleccionar pin/experiencia
+const SELECTED_VIEW_ALTITUDE = 0.75; // Zoom al seleccionar pin/experiencia
 
 export default function Layout({ experiences, selected, setSelected, globeInstance }) {
   const hasSelectedRef = useRef(false);
+  const lastSelectedRef = useRef(null);
 
   // Selección de experiencia o pin
   const handleSelect = (exp) => {
+    console.log('handleSelect llamado con:', exp);
+    console.log('Globe instance en handleSelect:', globeInstance.current);
     if (globeInstance.current && exp.lat && exp.lng) {
       globeInstance.current.controls().autoRotate = false;
       globeInstance.current.pointOfView(
         { lat: exp.lat, lng: exp.lng, altitude: SELECTED_VIEW_ALTITUDE },
         1200
       );
+      console.log('pointOfView llamado con:', { lat: exp.lat, lng: exp.lng, altitude: SELECTED_VIEW_ALTITUDE });
     }
     setSelected(exp);
     hasSelectedRef.current = true;
+    lastSelectedRef.current = exp;
   };
 
   // Al cerrar el modal
   const handleClose = () => {
-    if (globeInstance.current) {
+    if (globeInstance.current && lastSelectedRef.current) {
       globeInstance.current.controls().autoRotate = true;
-      // Solo regresa al zoom inicial si antes se seleccionó algo
-      if (hasSelectedRef.current) {
-        globeInstance.current.pointOfView(INITIAL_VIEW, 1200);
-        hasSelectedRef.current = false;
-      }
+      globeInstance.current.pointOfView(
+        { 
+          lat: INITIAL_VIEW.lat, 
+          lng: lastSelectedRef.current.lng, 
+          altitude: INITIAL_VIEW.altitude // zoom out pero sobre el mismo punto
+        },
+        1200
+      );
     }
     setSelected(null);
   };
@@ -63,6 +71,12 @@ export default function Layout({ experiences, selected, setSelected, globeInstan
       <footer className="max-w-6xl mx-auto mt-8 text-slate-400 text-sm">
         Hecho con ❤️
       </footer>
+
+      <style jsx global>{`
+        canvas[data-engine="three.js"] {
+          cursor: grab !important;
+        }
+      `}</style>
     </div>
   );
 }
