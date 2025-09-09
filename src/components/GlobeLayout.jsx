@@ -10,17 +10,9 @@ const SELECTED_VIEW_ALTITUDE = 0.75;
 export default function Layout({ experiences, selected, setSelected, globeInstance }) {
   const lastSelectedRef = useRef(null);
 
-
   const handleSelect = (exp) => {
     // Si el item ya está seleccionado → reset/close
-    console.log('handleSelect llamado con:', exp);
-
-    console.log(selected?.id === exp.id);
-    console.log(exp.id);
-    console.log(selected?.id);
-
     if (lastSelectedRef.current?.id === exp.id) {
-      console.log('El item ya está seleccionado, reseteando vista.');
       handleReset();
       return;
     }
@@ -38,7 +30,6 @@ export default function Layout({ experiences, selected, setSelected, globeInstan
     lastSelectedRef.current = exp;
   };
 
-  // Reset zoom
   const handleReset = () => {
     if (globeInstance.current && lastSelectedRef.current) {
       globeInstance.current.controls().autoRotate = true;
@@ -55,29 +46,25 @@ export default function Layout({ experiences, selected, setSelected, globeInstan
     lastSelectedRef.current = null;
   };
 
-  // Estadísticas para el dashboard
-  const totalPartidos = experiences.length;
-  const totalLigas = new Set(experiences.map(e => e.league)).size;
-  const totalEmpresas = new Set(experiences.map(e => e.company)).size;
-
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white">
-      <NavHeader />
+    <div className="flex flex-col h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+      {/* Header */}
+      <NavHeader className="flex-none" />
 
-      <Dashboard experiences={experiences} />
-      {/* Contenido principal: Globe + Lista */}
-      <main className="flex flex-1 w-full px-6 py-4 gap-4">
-        {/* Globe: 3/4 ancho */}
-        <section className="flex-6/10 bg-slate-900/40 rounded-2xl p-4 shadow-lg">
+      {/* Dashboard */}
+      <Dashboard experiences={experiences} className="flex-none" />
+
+      <main className="flex flex-1 w-full px-6 py-4 gap-4 overflow-hidden">
+        <section className="flex-none basis-[60%] bg-slate-900/40 rounded-2xl p-4 shadow-lg overflow-hidden">
           <GlobeContainer
             experiences={experiences}
+            selected={selected}
             setSelected={handleSelect}
             globeInstance={globeInstance}
           />
         </section>
 
-        {/* Lista: 1/4 ancho */}
-        <section className="flex-4/10 bg-slate-900/30 rounded-2xl p-4 shadow-inner overflow-y-auto max-h-[80vh]">
+        <section className="flex-none basis-[40%] bg-slate-900/30 rounded-2xl p-4 shadow-inner overflow-y-auto">
           <ExperienceList
             experiences={experiences}
             selected={selected}
@@ -86,9 +73,11 @@ export default function Layout({ experiences, selected, setSelected, globeInstan
         </section>
       </main>
 
-      <footer className="max-w-6xl mx-auto mt-8 text-slate-400 text-sm">
+      {/* Footer */}
+      <footer className="flex-none max-w-6xl mx-auto mt-2 text-slate-400 text-sm">
         Hecho con ❤️
       </footer>
     </div>
   );
 }
+

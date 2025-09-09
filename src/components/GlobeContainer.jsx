@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import Globe from 'globe.gl';
 
-export default function GlobeContainer({ experiences, setSelected, globeInstance }) {
+export default function GlobeContainer({ experiences, selected, setSelected, globeInstance }) {
   const globeEl = useRef(null);
 
   const travels = [
@@ -28,10 +28,10 @@ export default function GlobeContainer({ experiences, setSelected, globeInstance
           const originalExp = experiences.find(e => e.id === d.id) || d;
           setSelected(originalExp);
         })
+        .pointColor(d => selected?.id === d.id ? '#3b82f6' : '#ff7043') // azul para seleccionado
         .pointLat('lat')
         .pointLng('lng')
         .pointLabel(d => `${d.city}, ${d.country}`)
-        .pointColor(() => '#ff7043')
         .pointAltitude(0.02)
         .pointRadius(0.7)
         .arcsData(travels)
@@ -54,6 +54,8 @@ export default function GlobeContainer({ experiences, setSelected, globeInstance
       console.log('Globe creado:', globeInstance.current);
     } else {
       // Si ya existe, solo actualiza los datos
+      globeInstance.current.pointColor(d => selected?.id === d.id ? '#3b82f6' : '#ff7043');
+
       globeInstance.current.pointsData(experiences);
     }
 
