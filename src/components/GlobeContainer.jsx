@@ -28,7 +28,7 @@ export default function GlobeContainer({ experiences, selected, setSelected, glo
           const originalExp = experiences.find(e => e.id === d.id) || d;
           setSelected(originalExp);
         })
-        .pointColor(d => selected?.id === d.id ? '#3b82f6' : '#ff7043') // azul para seleccionado
+        .pointColor(d => selected?.id === d.id ? '#3b82f6' : '#ff7043')
         .pointLat('lat')
         .pointLng('lng')
         .pointLabel(d => `${d.city}, ${d.country}`)
@@ -46,7 +46,6 @@ export default function GlobeContainer({ experiences, selected, setSelected, glo
         .arcDashGap(0.25)
         .arcDashAnimateTime(7000);
 
-
       g.controls().autoRotate = true;
       g.controls().autoRotateSpeed = 0.4;
 
@@ -54,8 +53,6 @@ export default function GlobeContainer({ experiences, selected, setSelected, glo
       console.log('Globe creado:', globeInstance.current);
     } else {
       // Si ya existe, solo actualiza los datos
-      globeInstance.current.pointColor(d => selected?.id === d.id ? '#3b82f6' : '#ff7043');
-
       globeInstance.current.pointsData(experiences);
     }
 
@@ -68,14 +65,11 @@ export default function GlobeContainer({ experiences, selected, setSelected, glo
       const width = parent.clientWidth;
       const height = parent.clientHeight;
 
-      // Usa la API de globe.gl en lugar de manipular directamente el renderer y la cámara
       globeInstance.current.width(width);
       globeInstance.current.height(height);
     };
-    // Inicial resize
     resizeGlobe();
 
-    // Observador de tamaño y listener de ventana
     const ro = new ResizeObserver(resizeGlobe);
     ro.observe(globeEl.current.parentElement);
     window.addEventListener('resize', resizeGlobe);
@@ -85,6 +79,40 @@ export default function GlobeContainer({ experiences, selected, setSelected, glo
       window.removeEventListener('resize', resizeGlobe);
     };
   }, [experiences, setSelected, globeInstance]);
+
+  // Animación de glow del pin seleccionado
+  useEffect(() => {
+    if (!globeInstance.current) return;
+
+    let t = 0;
+    let animating = true;
+
+    const animateGlow = () => {
+      if (!animating) return;
+
+      t += 0.05; // velocidad del parpadeo
+      globeInstance.current.pointColor(d => {
+        if (selected?.id === d.id) {
+          // Oscila entre azul normal y azul más brillante
+          const intensity = 0.5 + 0.5 * Math.sin(t);
+          const r = Math.round(59 + 196 * intensity);  // '#3b82f6' base
+          const g = Math.round(130 + 125 * intensity);
+          const b = Math.round(246 + 9 * intensity);
+          return `rgb(${r},${g},${b})`;
+        }
+        return '#ff7043'; // color normal para los demás puntos
+      });
+
+      globeInstance.current.pointsData(experiences);
+      requestAnimationFrame(animateGlow);
+    };
+
+    animateGlow();
+
+    return () => {
+      animating = false; // detiene animación al desmontar
+    };
+  }, [selected, experiences]);
 
   return (
     <div className="w-full h-full rounded-2xl overflow-hidden">
