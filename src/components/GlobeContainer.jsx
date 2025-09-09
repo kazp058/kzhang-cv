@@ -25,7 +25,8 @@ export default function GlobeContainer({ experiences, setSelected, globeInstance
         .pointsData(experiences)
         .onPointClick(d => {
           console.log('Pin clickeado:', d);
-          setSelected(d);
+          const originalExp = experiences.find(e => e.id === d.id) || d;
+          setSelected(originalExp);
         })
         .pointLat('lat')
         .pointLng('lng')
