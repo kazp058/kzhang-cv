@@ -3,21 +3,22 @@ import GlobeContainer from './GlobeContainer';
 import ExperienceList from './ExperienceList';
 import NavHeader from './NavHeader';
 import Dashboard from './Dashboard';
+import useScrollIndicator from "../hooks/useScrollIndicator";
+import ScrollArrow from "./ScrollArrow";
 
 const INITIAL_VIEW = { lat: 20, lng: 0, altitude: 1.8 };
 const SELECTED_VIEW_ALTITUDE = 0.45;
 
-export default function Layout({ experiences, matches, selected, setSelected, globeInstance }) {
+export default function Layout({ experiences, matches, selected, setSelected, globeInstance, currentSection }) {
   const lastSelectedRef = useRef(null);
 
+  const showScroll = useScrollIndicator(currentSection, 2000);
+
   const handleSelect = (exp) => {
-    // Si el item ya está seleccionado → reset/close
     if (lastSelectedRef.current?.id === exp.id) {
       handleReset();
       return;
     }
-
-    // Si es un nuevo item → hacer zoom
     if (globeInstance.current && exp.lat && exp.lng) {
       globeInstance.current.controls().autoRotate = false;
       globeInstance.current.pointOfView(
@@ -25,7 +26,6 @@ export default function Layout({ experiences, matches, selected, setSelected, gl
         1200
       );
     }
-
     setSelected(exp);
     lastSelectedRef.current = exp;
   };
@@ -47,15 +47,15 @@ export default function Layout({ experiences, matches, selected, setSelected, gl
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white">
-      {/* Dashboard: aparece/desaparece suavemente */}
+    <div className="flex flex-col h-full text-white">
+      {/* Dashboard */}
       <div
         className={`
-    transition-all duration-500 ease-in-out overflow-hidden
-    ${(!selected || matches.some(m => String(m['Experience ID']) === String(selected.id)))
+          transition-all duration-500 ease-in-out overflow-hidden
+          ${(!selected || matches.some(m => String(m['Experience ID']) === String(selected.id)))
             ? 'opacity-100 max-h-[500px] translate-y-0'
             : 'opacity-0 max-h-0 -translate-y-4'}
-  `}
+        `}
       >
         <Dashboard
           experiences={experiences}
@@ -65,11 +65,11 @@ export default function Layout({ experiences, matches, selected, setSelected, gl
         />
       </div>
 
-      {/* Main: siempre ocupa todo el espacio disponible */}
-      <main className="flex flex-1 w-full h-full px-6 py-4 gap-4 overflow-hidden">
-        {/* Contenedor del globo */}
-        <section className="flex-none basis-[60%] bg-slate-900/40 rounded-2xl p-4 shadow-lg overflow-hidden"
-          onWheel={(e) => e.stopPropagation()} // Bloquea scroll de la página
+      {/* Main */}
+      <main className="flex flex-1 w-full h-full px-6 py-4 gap-4 overflow-hidden global-container-layout">
+        {/* Globe */}
+        <section className="flex-1 min-w-0 bg-black/30 rounded-2xl shadow-xl overflow-hidden global-card-layout"
+          onWheel={(e) => e.stopPropagation()}
         >
           <GlobeContainer
             experiences={experiences}
@@ -80,16 +80,22 @@ export default function Layout({ experiences, matches, selected, setSelected, gl
           />
         </section>
 
-        {/* Lista de experiencias */}
-        <section className="flex-none basis-[40%] bg-slate-900/30 rounded-2xl p-4 shadow-inner">
-          <ExperienceList
-            experiences={experiences}
-            selected={selected}
-            setSelected={handleSelect}
-          />
+        {/* Experience List */}
+        <section className="flex-1 min-w-0 bg-black/20 rounded-2xl shadow-inner global-card-layout p-0"
+          onWheel={(e) => e.stopPropagation()}
+        >
+          <div className="h-full overflow-hidden">
+            <ExperienceList
+              experiences={experiences}
+              selected={selected}
+              setSelected={handleSelect}
+            />
+          </div>
         </section>
       </main>
+
     </div>
+    
   );
 }
 

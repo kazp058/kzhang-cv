@@ -166,8 +166,8 @@ export default function GlobeContainer({ experiences, matches, selected, setSele
   }, [selected, combinedPoints]);
 
   return (
-    <div className="w-full h-full rounded-2xl overflow-hidden">
-      <div ref={globeEl} className="w-full h-full" />
+    <div className="global-container-globe global-card-layout w-full h-full rounded-2xl overflow-hidden">
+      <div ref={globeEl} className="w-full h-full globe-bg" />
     </div>
   );
 }

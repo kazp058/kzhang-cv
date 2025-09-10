@@ -3,13 +3,13 @@
     "id": 1,
     "lat": 25.12488323571715,
     "lng": 55.38071169049753,
-    "country": "United Arab Emirates",
-    "city": "Middle East",
-    "role": "VAR Football Systems Operator",
+    "country": "Emiratos Árabes Unidos",
+    "city": "Dubai",
+    "role": "Operador de Sistemas VAR de Fútbol",
     "company": "Hawk-Eye Innovations Ltd.",
     "start": "Feb/2024",
     "end": "May/2025",
-    "description": "",
+    "experience": [],
     "image": ""
   },
   {
@@ -17,25 +17,35 @@
     "lat": -2.111724064549847,
     "lng": -79.9093573817597,
     "country": "Ecuador",
-    "city": "VAR operations",
-    "role": "Technical Lead",
+    "city": "Guayaquil",
+    "role": "Junior Tech Lead",
     "company": "Hawk-Eye Innovations Ltd.",
-    "start": "Apr/2022",
+    "start": "Abr/2022",
     "end": "Feb/2024",
-    "description": "Managed field testing and production releases for the LATAM region. Established policies and standardized equipment deployment for effective coordination. Led inventory management and served as the main contact point for project manager. Investigated and resolved technical issues and inquiries from clients.",
+    "experience": [
+      "Gestioné pruebas de campo y lanzamientos de producción para la región.",
+      "Establecí políticas y estandaricé el despliegue de equipos para una coordinación efectiva.",
+      "Lideré la gestión de inventarios y serví como punto principal de contacto para el gerente de proyecto.",
+      "Investigé y resolví problemas técnicos y consultas de clientes."
+    ],
     "image": ""
   },
   {
     "id": 3,
-    "lat": -2.1923905830528607, 
+    "lat": -2.1923905830528607,
     "lng": -79.88292921927294,
     "country": "Ecuador",
-    "city": "Tiendas Industriales Asociadas S.A.",
-    "role": "Systems Developer Intern",
+    "city": "Guayaquil",
+    "role": "Practicante Desarrollador de Sistemas",
     "company": "Tiendas Industriales Asociadas S.A.",
     "start": "Mar/2022",
     "end": "Jun/2022",
-    "description": "Designed, developed, and documented a REST API for the ERP system Idempiere. Programmed mainly in Java, utilizing design patterns such as builder and factory. Collaborated with the special projects team to create an internal mobile app for real-time monitoring of stock, inventory, and discounts. Utilized Postman for API testing and MySQL for database management, implementing complex statements for synchronous transactions.",
+    "experience": [
+      "Diseñé, desarrollé y documenté una API REST para el sistema ERP Idempiere.",
+      "Programé principalmente en Java, utilizando patrones de diseño como builder y factory.",
+      "Colaboré con el equipo de proyectos especiales para crear una app móvil interna para monitoreo en tiempo real de stock, inventario y descuentos.",
+      "Utilicé Postman para pruebas de API y MySQL para gestión de base de datos, implementando sentencias complejas para transacciones sincronizadas."
+    ],
     "image": ""
   },
   {
@@ -43,12 +53,16 @@
     "lat": -2.1516590399599687,
     "lng": -79.95689337146995,
     "country": "Ecuador",
-    "city": "Center for Research, Development, and Innovation of Computational Systems",
-    "role": "Network-Web and IT Management Intern",
-    "company": "Escuela Superior Politécnica del Litoral",
+    "city": "Guayaquil",
+    "role": "Practicante de Gestión de Redes, Web y TI",
+    "company": "Centro de Investigación, Desarrollo e Innovación de Sistemas Computacionales - Escuela Superior Politécnica del Litoral",
     "start": "Oct/2021",
     "end": "Feb/2022",
-    "description": "Performed follow-up on loaned inventory, installed network equipment, and conducted server upgrades. Troubleshooted and maintained research computers, handling procurement for upgrades and new equipment. Executed corrective and preventive maintenance tasks, ensuring smooth operation of systems.",
+    "experience": [
+      "Realicé seguimiento del inventario prestado, instalé equipos de red y ejecuté actualizaciones de servidores.",
+      "Solucioné problemas y mantuve los equipos de investigación, manejando la adquisición para mejoras y nuevos equipos.",
+      "Ejecuté tareas de mantenimiento correctivo y preventivo, asegurando el buen funcionamiento de los sistemas."
+    ],
     "image": ""
   }
 ]
