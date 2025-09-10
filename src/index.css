@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -70,4 +72,124 @@ button:focus-visible {
   display: block;
   border-radius: 12px;
   overflow: hidden;
+}
+
+/* ===== Scrollbar global para todo el sitio ===== */
+body, html {
+  scrollbar-width: thin;               /* Firefox */
+  scrollbar-color: #9ca3af #1e293b;    /* thumb color / track color */
+}
+
+/* WebKit (Chrome, Edge, Safari) */
+body::-webkit-scrollbar,
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track,
+html::-webkit-scrollbar-track {
+  background: #1e293b;   /* slate-800/900 */
+  border-radius: 8px;
+}
+
+body::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb {
+  background-color: #9ca3af; /* gray-400 */
+  border-radius: 8px;
+  border: 2px solid #1e293b;
+}
+
+body::-webkit-scrollbar-thumb:hover,
+html::-webkit-scrollbar-thumb:hover {
+  background-color: #6b7280; /* gray-500 al hover */
+}
+
+/* ===== Scrollbar específica para ExperienceList ===== */
+.experience-list {
+  height: 100%;
+  overflow-y: auto;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #9ca3af #1e293b;
+}
+
+/* WebKit */
+.experience-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.experience-list::-webkit-scrollbar-track {
+  background: #1e293b;
+  border-radius: 8px;
+}
+
+.experience-list::-webkit-scrollbar-thumb {
+  background-color: #9ca3af;
+  border-radius: 8px;
+  border: 2px solid #1e293b;
+}
+
+.experience-list::-webkit-scrollbar-thumb:hover {
+  background-color: #6b7280;
+}
+
+/* ===== Scrollbar global para todo el sitio ===== */
+body, html {
+  scrollbar-width: thin;               /* Firefox */
+  scrollbar-color: #9ca3af #1e293b;    /* thumb color / track color */
+}
+
+/* WebKit (Chrome, Edge, Safari) */
+body::-webkit-scrollbar,
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track,
+html::-webkit-scrollbar-track {
+  background: #1e293b;   /* slate-800/900 */
+  border-radius: 8px;
+}
+
+body::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb {
+  background-color: #9ca3af; /* gray-400 */
+  border-radius: 8px;
+  border: 2px solid #1e293b;
+}
+
+body::-webkit-scrollbar-thumb:hover,
+html::-webkit-scrollbar-thumb:hover {
+  background-color: #6b7280; /* gray-500 al hover */
+}
+
+/* ===== Scrollbar específica para ExperienceList ===== */
+.experience-list {
+  height: 100%;
+  overflow-y: auto;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #9ca3af #1e293b;
+}
+
+/* WebKit */
+.experience-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.experience-list::-webkit-scrollbar-track {
+  background: #1e293b;
+  border-radius: 8px;
+}
+
+.experience-list::-webkit-scrollbar-thumb {
+  background-color: #9ca3af;
+  border-radius: 8px;
+  border: 2px solid #1e293b;
+}
+
+.experience-list::-webkit-scrollbar-thumb:hover {
+  background-color: #6b7280;
 }

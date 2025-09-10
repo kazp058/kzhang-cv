@@ -4,10 +4,10 @@ import ExperienceList from './ExperienceList';
 import NavHeader from './NavHeader';
 import Dashboard from './Dashboard';
 
-const INITIAL_VIEW = { lat: 20, lng: 0, altitude: 2.5 };
-const SELECTED_VIEW_ALTITUDE = 0.75;
+const INITIAL_VIEW = { lat: 20, lng: 0, altitude: 1.8 };
+const SELECTED_VIEW_ALTITUDE = 0.45;
 
-export default function Layout({ experiences, selected, setSelected, globeInstance }) {
+export default function Layout({ experiences, matches, selected, setSelected, globeInstance }) {
   const lastSelectedRef = useRef(null);
 
   const handleSelect = (exp) => {
@@ -48,23 +48,40 @@ export default function Layout({ experiences, selected, setSelected, globeInstan
 
   return (
     <div className="flex flex-col h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white">
-      {/* Header */}
-      <NavHeader className="flex-none" />
+      {/* Dashboard: aparece/desaparece suavemente */}
+      <div
+        className={`
+    transition-all duration-500 ease-in-out overflow-hidden
+    ${(!selected || matches.some(m => String(m['Experience ID']) === String(selected.id)))
+            ? 'opacity-100 max-h-[500px] translate-y-0'
+            : 'opacity-0 max-h-0 -translate-y-4'}
+  `}
+      >
+        <Dashboard
+          experiences={experiences}
+          matches={matches}
+          selected={selected}
+          className="flex-none"
+        />
+      </div>
 
-      {/* Dashboard */}
-      <Dashboard experiences={experiences} className="flex-none" />
-
-      <main className="flex flex-1 w-full px-6 py-4 gap-4 overflow-hidden">
-        <section className="flex-none basis-[60%] bg-slate-900/40 rounded-2xl p-4 shadow-lg overflow-hidden">
+      {/* Main: siempre ocupa todo el espacio disponible */}
+      <main className="flex flex-1 w-full h-full px-6 py-4 gap-4 overflow-hidden">
+        {/* Contenedor del globo */}
+        <section className="flex-none basis-[60%] bg-slate-900/40 rounded-2xl p-4 shadow-lg overflow-hidden"
+          onWheel={(e) => e.stopPropagation()} // Bloquea scroll de la página
+        >
           <GlobeContainer
             experiences={experiences}
+            matches={matches}
             selected={selected}
             setSelected={handleSelect}
             globeInstance={globeInstance}
           />
         </section>
 
-        <section className="flex-none basis-[40%] bg-slate-900/30 rounded-2xl p-4 shadow-inner overflow-y-auto">
+        {/* Lista de experiencias */}
+        <section className="flex-none basis-[40%] bg-slate-900/30 rounded-2xl p-4 shadow-inner">
           <ExperienceList
             experiences={experiences}
             selected={selected}
@@ -72,11 +89,6 @@ export default function Layout({ experiences, selected, setSelected, globeInstan
           />
         </section>
       </main>
-
-      {/* Footer */}
-      <footer className="flex-none max-w-6xl mx-auto mt-2 text-slate-400 text-sm">
-        Hecho con ❤️
-      </footer>
     </div>
   );
 }
