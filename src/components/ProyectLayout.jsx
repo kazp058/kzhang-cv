@@ -9,7 +9,7 @@ export default function ProjectLayout() {
   const total = projectsData.length;
 
   const scrollToIndex = (index) => {
-    setExpandedIndex(null);
+
     setCurrentIndex(index);
     if (!carouselRef.current) return;
     const card = carouselRef.current.querySelector(".dashboard-card");
@@ -28,35 +28,42 @@ export default function ProjectLayout() {
     const newIndex = Math.max(currentIndex - 1, 0);
     if (newIndex <= 0) { scrollToIndex(total - 1) }
     else scrollToIndex(newIndex);
+
+    setExpandedIndex(null);
   };
 
   const handleNext = () => {
     const newIndex = Math.min(currentIndex + 1, total - 1);
     if (newIndex >= total - 1) { scrollToIndex(0) }
     else scrollToIndex(newIndex);
+
+    setExpandedIndex(null);
   };
 
   const handleExpand = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
+    scrollToIndex(index);
+  };
+
+  const getProjectImage = (project) => {
+    // intenta cargar imagen específica, sino usa default
+    const imagePath = `/images/${project.id}.jpg`;
+    return imagePath;
   };
 
   return (
     <div className="w-full py-6">
       <h1 className="title-main text-4xl mb-6 text-center">Proyectos</h1>
 
-      {/* Contenedor flex: botones y carrusel */}
       <div className="flex items-center gap-2 h-[75vh]">
-        {/* Botón izquierda */}
         <button
           onClick={handlePrev}
-          className="self-stretch btn-warning  flex items-center justify-center"
+          className="self-stretch btn-warning flex items-center justify-center"
           style={{ width: "3rem" }}
-
         >
           ‹
         </button>
 
-        {/* Carrusel */}
         <div className="flex-1 h-full overflow-hidden">
           <div
             ref={carouselRef}
@@ -78,18 +85,39 @@ export default function ProjectLayout() {
                   onClick={() => handleExpand(index)}
                 >
                   <div className="flex flex-col flex-grow">
+                    {/* Solo mostrar imagen y shortDescription si NO está expandido */}
+                    {!isExpanded && (
+                      <>
+                        <img
+                          src={getProjectImage(project)}
+                          onError={(e) => { e.target.onerror = null; e.target.src = "/default.png"; }}
+                          alt={project.name}
+                          className="w-full h-48 object-cover rounded-md mb-4"
+                        />
+                        <p className="text-gray-300 mb-4 line-clamp-3">{project.shortDescription}</p>
+                      </>
+                    )}
+
                     <h2 className="title-section text-xl mb-2">{project.name}</h2>
-                    <p className="text-gray-300 mb-4 line-clamp-3">{project.shortDescription}</p>
+
+                    {/* Tecnologías */}
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech, idx) => (
-                        <span
-                          key={idx}
-                          className="bg-blue-600 text-white text-xs px-2 py-1 rounded"
-                        >
+                        <span key={idx} className="bg-blue-600 text-white text-xs px-2 py-1 rounded">
                           {tech}
                         </span>
                       ))}
                     </div>
+
+                    {/* Descripción detallada solo si expandido */}
+                    {isExpanded && project.description && (
+                      <ul className="list-disc list-inside text-gray-200 mb-4">
+                        {project.description.map((point, i) => (
+                          <li key={i}>{point}</li>
+                        ))}
+                      </ul>
+                    )}
+
                     <a
                       href={project.github}
                       target="_blank"
@@ -105,11 +133,10 @@ export default function ProjectLayout() {
           </div>
         </div>
 
-        {/* Botón derecha */}
         <button
           onClick={handleNext}
-          className="self-stretch btn-warning  flex items-center justify-center"
-          style={{ width: "3rem" }}        >
+          className="self-stretch btn-warning flex items-center justify-center"
+        >
           ›
         </button>
       </div>
