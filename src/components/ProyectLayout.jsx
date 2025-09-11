@@ -90,7 +90,7 @@ export default function ProjectLayout() {
                       <>
                         <img
                           src={getProjectImage(project)}
-                          onError={(e) => { e.target.onerror = null; e.target.src = "../assets/default.png"; }}
+                          onError={(e) => { e.target.onerror = null; e.target.src = `${import.meta.env.BASE_URL}default.png`; }}
                           alt={project.name}
                           className="w-full h-48 object-cover rounded-md mb-4"
                         />
