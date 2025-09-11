@@ -7,7 +7,6 @@ export default function Dashboard({ experiences = [], matches = [], selected = n
 
   const allMatches = Array.isArray(matches) ? matches : [];
 
-  // Filtrado según experience seleccionada
   const filteredMatches = selected
     ? allMatches.filter(m => String(getMatchExperienceId(m)) === String(selected.id))
     : allMatches;
@@ -36,13 +35,12 @@ export default function Dashboard({ experiences = [], matches = [], selected = n
 
   return (
     <div className="px-6 py-4">
-      <div className="mb-2 text-slate-300">{subtitle}</div>
+      <div className="mb-2 text-slate-300 text-lg font-medium drop-shadow-sm">{subtitle}</div>
 
       <div className="flex gap-6">
         {stats.map(stat => {
           const animatedValue = useCountUp(stat.value, 1000);
 
-          // nombre de variable CSS dinámico
           const fromVar = `--dashboard-${stat.label.toLowerCase()}-from`;
           const toVar = `--dashboard-${stat.label.toLowerCase()}-to`;
 

@@ -1,15 +1,44 @@
 [
+    {
+    "id": 0,
+    "lat": 25.12488323571715,
+    "lng": 55.38071169049753,
+    "country": "Emiratos Árabes Unidos",
+    "city": "Dubai",
+    "role": "Technical Lead - Box Sells Ops",
+    "company": "Hawk-Eye Innovations Ltd.",
+    "companyLink": "https://www.hawkeyeinnovations.com/",
+    "start": "May/2025",
+    "end": null,
+    "experience": [
+      "Punto de contacto técnico principal para operaciones críticas y resolución de escalaciones de clientes.",
+      "Mantenimiento y organización de actualizaciones del sistema, asegurando cumplimiento con estándares globales.",
+      "Redacción y mantenimiento de documentación técnica para apoyar a equipos internos y operaciones de clientes.",
+      "Liderazgo en implementaciones, incluyendo el despliegue de un centro de operaciones remoto en Uzbekistán.",
+      "Supervisión de operaciones críticas de mantenimiento, reparación y actualización remotas con tiempo de inactividad mínimo.",
+      "Diseño y entrega de guías de capacitación técnica para mejorar las habilidades del personal de ingeniería regional.",
+      "Colaboración en el diseño, implementación y pruebas de una nueva interfaz de usuario para mejorar la usabilidad del sistema para personal nuevo o externo."
+    ],
+    "image": ""
+  },
   {
     "id": 1,
     "lat": 25.12488323571715,
     "lng": 55.38071169049753,
     "country": "Emiratos Árabes Unidos",
     "city": "Dubai",
-    "role": "Operador de Sistemas VAR de Fútbol",
+    "role": "VAR Technical Lead - EAU Ops",
     "company": "Hawk-Eye Innovations Ltd.",
+    "companyLink": "https://www.hawkeyeinnovations.com/",
     "start": "Feb/2024",
     "end": "May/2025",
-    "experience": [],
+    "experience": [
+      "Operación y soporte de sistemas VAR (Video Assistant Referee) en competiciones locales e internacionales.",
+      "Participación clave en la implementación del Protocolo de Anuncios Públicos en torneos importantes de Emiratos Árabes Unidos, incluyendo la Final de la ADIB Cup y la President’s Cup.",
+      "Aseguramiento del cumplimiento de estándares internacionales y mantenimiento de actualizaciones de software y hardware.",
+      "Coordinación con árbitros, broadcasters e ingenieros para garantizar operaciones sin contratiempos durante los partidos.",
+      "Resolución de problemas en tiempo real bajo presión en entornos de competición en vivo."
+    ],
     "image": ""
   },
   {
@@ -18,8 +47,9 @@
     "lng": -79.9093573817597,
     "country": "Ecuador",
     "city": "Guayaquil",
-    "role": "Junior Tech Lead",
+    "role": "Junior VAR Technical Lead -  Ecuador Ops",
     "company": "Hawk-Eye Innovations Ltd.",
+    "companyLink": "https://www.hawkeyeinnovations.com/",
     "start": "Abr/2022",
     "end": "Feb/2024",
     "experience": [
@@ -38,6 +68,7 @@
     "city": "Guayaquil",
     "role": "Practicante Desarrollador de Sistemas",
     "company": "Tiendas Industriales Asociadas S.A.",
+    "companyLink": "https://reclutamiento.tia.com.ec/",
     "start": "Mar/2022",
     "end": "Jun/2022",
     "experience": [
@@ -55,7 +86,8 @@
     "country": "Ecuador",
     "city": "Guayaquil",
     "role": "Practicante de Gestión de Redes, Web y TI",
-    "company": "Centro de Investigación, Desarrollo e Innovación de Sistemas Computacionales - Escuela Superior Politécnica del Litoral",
+    "company": "Centro de Investigación, Desarrollo e Innovación de Sistemas Computacionales",
+    "companyLink": "https://www.cidis.espol.edu.ec/",
     "start": "Oct/2021",
     "end": "Feb/2022",
     "experience": [

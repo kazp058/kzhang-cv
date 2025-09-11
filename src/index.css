@@ -15,43 +15,36 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --dashboard-partidos-from: #2563eb;  /* azul título principal */
-  --dashboard-partidos-to: #646cff;    /* azul enlace */
+  --dashboard-partidos-from: #2563eb;
+  --dashboard-partidos-to: #646cff;  
 
-  --dashboard-paises-from: #10b981;    /* verde vibrante */
+  --dashboard-paises-from: #10b981; 
   --dashboard-paises-to: #34d399;
 
-  --dashboard-torneos-from: #7c3aed;   /* púrpura */
+  --dashboard-torneos-from: #7c3aed; 
   --dashboard-torneos-to: #a78bfa;
 
 
-    /* Texto */
   --text-white: #ffffff;
 
-  /* Primary */
-  --btn-primary-bg: #3b82f6;          /* azul sólido */
+  --btn-primary-bg: #3b82f6;    
   --btn-primary-hover: #2563eb;
 
-  /* Secondary (Ghost / Outline) */
-  --btn-secondary-bg: #8b5cf6;           /* violet-500 */
-  --btn-secondary-hover-bg: #7c3aed;     /* violet-600 más oscuro al hover */
+  --btn-secondary-bg: #8b5cf6;        
+  --btn-secondary-hover-bg: #7c3aed;    
   --btn-secondary-text: #ffffff;
 
-  /* Success / Confirm */
   --btn-success-bg: #22c55e;
   --btn-success-hover: #16a34a;
 
-  /* Warning / Alert */
   --btn-warning-bg: #f97316;
   --btn-warning-hover: #ea580c;
 
-  /* Neutral (semi-transparente sobre fondo oscuro) */
-  --btn-neutral-bg: rgba(55, 65, 81, 0.3); /* slate-700/30 */
+  --btn-neutral-bg: rgba(55, 65, 81, 0.3); 
   --btn-neutral-hover-bg: rgba(55, 65, 81, 0.5);
 
 }
 
-/* Opcional: texto, card y hover para dashboard */
 .dashboard-card {
   border-radius: 1rem;
   box-shadow: 0 8px 32px rgba(0,0,0,0.20);
@@ -110,7 +103,6 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
   }
   a:hover {
     color: #747bff;
@@ -122,7 +114,6 @@ button:focus-visible {
 
 body, html {
   min-height: 100vh;
-  background: linear-gradient(180deg, #232526 0%, #414345 100%);
   color: #f3f4f6;
   font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
@@ -165,7 +156,7 @@ body, html {
 /* ===== Scrollbar global para todo el sitio ===== */
 body, html {
   scrollbar-width: thin;               /* Firefox */
-  scrollbar-color: #9ca3af #1e293b;    /* thumb color / track color */
+  scrollbar-color: #9ca3af #1e293b;  
 }
 
 /* WebKit (Chrome, Edge, Safari) */
@@ -176,23 +167,30 @@ html::-webkit-scrollbar {
 
 body::-webkit-scrollbar-track,
 html::-webkit-scrollbar-track {
-  background: #1e293b;   /* slate-800/900 */
+  background: #1e293b;
   border-radius: 8px;
 }
 
 body::-webkit-scrollbar-thumb,
 html::-webkit-scrollbar-thumb {
-  background-color: #9ca3af; /* gray-400 */
+  background-color: #9ca3af;
   border-radius: 8px;
   border: 2px solid #1e293b;
 }
 
 body::-webkit-scrollbar-thumb:hover,
 html::-webkit-scrollbar-thumb:hover {
-  background-color: #6b7280; /* gray-500 al hover */
+  background-color: #6b7280; 
 }
 
-/* ===== Scrollbar específica para ExperienceList ===== */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .experience-list {
   height: 100%;
   overflow-y: auto;
@@ -224,19 +222,18 @@ html::-webkit-scrollbar-thumb:hover {
 
 .experience-list a {
   font-weight: 500;
-  color: #fb923c;       /* naranja claro inicial */
+  color: #fb923c;  
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .experience-list a:hover {
-  color: #f1d21e;       /* naranja más brillante al hover */
+  color: #f1d21e;  
 }
 
-/* ===== Scrollbar global para todo el sitio ===== */
 body, html {
   scrollbar-width: thin;               /* Firefox */
-  scrollbar-color: #9ca3af #1e293b;    /* thumb color / track color */
+  scrollbar-color: #9ca3af #1e293b;  
 }
 
 /* WebKit (Chrome, Edge, Safari) */
@@ -263,7 +260,6 @@ html::-webkit-scrollbar-thumb:hover {
   background-color: #6b7280; /* gray-500 al hover */
 }
 
-/* ===== Scrollbar específica para ExperienceList ===== */
 .experience-list {
   height: 100%;
   overflow-y: auto;
@@ -303,7 +299,6 @@ html::-webkit-scrollbar-thumb:hover {
   padding: 0;
   margin: 0 auto;
   box-sizing: border-box;
-  /* Hereda de global-container */
   font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
@@ -314,12 +309,7 @@ html::-webkit-scrollbar-thumb:hover {
   background: rgba(0,0,0,0.30);
 }
 
-.global-container-globe {
-  background: linear-gradient(180deg, #232526 0%, #414345 100%);
-}
-
 .globe-bg {
-  background: linear-gradient(180deg, #232526 0%, #414345 100%);
   width: 100%;
   height: 100%;
   border-radius: 12px;
@@ -345,7 +335,6 @@ html::-webkit-scrollbar-thumb:hover {
   background-color: var(--btn-primary-hover);
 }
 
-/* Secondary */
 .btn-secondary {
   background-color: var(--btn-secondary-bg);
   color: var(--btn-secondary-border);
@@ -356,8 +345,6 @@ html::-webkit-scrollbar-thumb:hover {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  width: 11rem;
-  height: 3rem;
   text-align: center;
   transition: all 0.2s;
 }
@@ -365,7 +352,6 @@ html::-webkit-scrollbar-thumb:hover {
   background-color: var(--btn-secondary-hover-bg);
   color: var(--btn-secondary-hover-text);
 }
-/* Success */
 .btn-success {
   background-color: var(--btn-success-bg);
   color: var(--text-white);
@@ -377,7 +363,6 @@ html::-webkit-scrollbar-thumb:hover {
   background-color: var(--btn-success-hover);
 }
 
-/* Warning */
 .btn-warning {
   background-color: var(--btn-warning-bg);
   color: var(--text-white);
@@ -389,7 +374,6 @@ html::-webkit-scrollbar-thumb:hover {
   background-color: var(--btn-warning-hover);
 }
 
-/* Neutral */
 .btn-neutral {
   background-color: var(--btn-neutral-bg);
   color: var(--text-white);

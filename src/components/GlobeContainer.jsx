@@ -110,7 +110,6 @@ export default function GlobeContainer({ experiences, matches, selected, setSele
       globeInstance.current.arcsData(allArcs);
     }
 
-    // Resize automático
     const resizeGlobe = () => {
       if (!globeEl.current || !globeInstance.current) return;
       const parent = globeEl.current.parentElement;
@@ -129,7 +128,6 @@ export default function GlobeContainer({ experiences, matches, selected, setSele
     };
   }, [combinedPoints, allArcs, selected, setSelected, globeInstance]);
 
-  // Animación glow para experiences
   useEffect(() => {
     if (!globeInstance.current) return;
 

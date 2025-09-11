@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import Layout from '../components/GlobeLayout';
 import experiences from '../data/experiences.json';
 import matches from '../data/matches.json';
+
+import Layout from '../components/GlobeLayout';
 import PresentationLayout from '../components/PresentationLayout';
+import ProjectLayout from '../components/ProyectLayout';
 
 export default function GlobePage() {
   const [selected, setSelected] = useState(null);
@@ -19,10 +21,8 @@ export default function GlobePage() {
       behavior: 'smooth'
     });
   };
-
-  // 🔹 Forzar inicio en la primera sección
   useEffect(() => {
-    scrollToSection(0); // fuerza ir a la sección 0 al montar
+    scrollToSection(0); 
   }, []);
 
   useEffect(() => {
@@ -104,14 +104,12 @@ export default function GlobePage() {
 
   return (
     <div className="bg-gradient-to-b from-[#232526] to-[#414345] min-h-screen text-white">
-      {/* 1️⃣ Sección Presentación */}
       <section style={{ height: '100vh' }}>
         <div className="relative w-screen h-screen overflow-hidden">
           <PresentationLayout currentSection={currentSection} />
         </div>
       </section>
 
-      {/* 2️⃣ Sección "Mi mundo" */}
       <section style={{ height: '100vh', overflow: 'hidden' }}>
         <div className="global-container h-full flex items-center justify-center">
           <Layout
@@ -125,14 +123,12 @@ export default function GlobePage() {
         </div>
       </section>
 
-      {/* 3️⃣ Sección placeholder */}
       <section style={{ height: '100vh' }}>
-        <div className="global-container flex items-center justify-center h-full text-white text-3xl">
-          Habilidades
+        <div className="relative w-screen h-screen overflow-hidden">
+          <ProjectLayout />
         </div>
       </section>
 
-      {/* 4️⃣ Sección placeholder */}
       <section style={{ height: '100vh', background: '#222' }}>
         <div className="global-container flex items-center justify-center h-full text-white text-3xl">
           Proyectos

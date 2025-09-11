@@ -5,16 +5,6 @@ import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 
 export default function ExperienceList({ experiences, selected, setSelected }) {
 
-  const handleCompanyClick = (url) => {
-    if (!url) return;
-    window.open(url, '_blank');
-  };
-
-  const handleCityClick = (city, country) => {
-    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(city + ', ' + country)}`;
-    window.open(mapsUrl, '_blank');
-  };
-
   return (
     <div className="flex flex-col h-full p-4 experience-list">
       <h2 className="title-section text-xl font-medium mb-4">Experiencias</h2>
@@ -35,7 +25,6 @@ export default function ExperienceList({ experiences, selected, setSelected }) {
               <div className="flex flex-col md:flex-row justify-between items-start md:items-start lg:items-center p-3 gap-4">
                 <div className="font-semibold text-white">{exp.role}</div>
 
-                {/* Fechas como pills */}
                 <div className="
                   flex 
                   flex-row md:flex-col lg:flex-row
@@ -51,20 +40,18 @@ export default function ExperienceList({ experiences, selected, setSelected }) {
                 </div>
               </div>
 
-              {/* Contenido expandible */}
               <div className={`overflow-hidden transition-all duration-500 ${isSelected ? 'max-h-[2000px] px-3 pb-3' : 'max-h-0 px-3'}`}>
                 <div className="mt-1 flex flex-col gap-2">
-                  {/* Empresa clickeable */}
                   <a
-                    href={exp.website}
+                    href={exp.companyLink || exp.website || '#'} // usa companyLink si existe
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1 text-sm text-slate-300 hover:text-blue-400 cursor-pointer transition-colors"
+                    onClick={(e) => e.stopPropagation()} // evita que seleccione la experiencia al hacer click
                   >
                     <WorkOutlineIcon className="w-4 h-4" /> {exp.company}
                   </a>
 
-                  {/* Ciudad clickeable */}
                   <a
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(exp.city + ', ' + exp.country)}`}
                     target="_blank"
@@ -74,7 +61,6 @@ export default function ExperienceList({ experiences, selected, setSelected }) {
                     <LocationOnOutlinedIcon className="w-4 h-4" /> {exp.city}, {exp.country}
                   </a>
                 </div>
-                {/* Lista de descripción */}
                 <ul className="mt-2 space-y-1 text-sm text-slate-200">
                   {descItems.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-2">
@@ -83,15 +69,6 @@ export default function ExperienceList({ experiences, selected, setSelected }) {
                     </li>
                   ))}
                 </ul>
-
-                {/* Imagen */}
-                {exp.image && (
-                  <img
-                    src={exp.image}
-                    alt={exp.company}
-                    className="mt-3 w-full h-28 object-cover rounded-lg shadow-inner"
-                  />
-                )}
               </div>
             </li>
           );

@@ -19,6 +19,7 @@ export default function PresentationLayout({ currentSection }) {
         Tu navegador no soporta el video.
       </video>
 
+      {/* Overlay semi-transparente */}
       <div className="absolute top-0 left-0 w-full h-full bg-gray-800/60 z-10"></div>
 
       {/* Contenido principal */}
@@ -41,10 +42,12 @@ export default function PresentationLayout({ currentSection }) {
         </div>
       </div>
 
-      <div className="relative w-screen h-screen overflow-hidden">
-        {/* Contenido */}
-        {currentSection === 0 && showScroll && <ScrollArrow />}
-      </div>
+      {/* Flecha flotante sobre todo el contenido */}
+      {currentSection === 0 && showScroll && (
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-50 pointer-events-none">
+          <ScrollArrow />
+        </div>
+      )}
     </section>
   );
 }

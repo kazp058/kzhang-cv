@@ -1,0 +1,155 @@
+[
+  {
+    "id": 1,
+    "name": "Docpy",
+    "shortDescription": "Librería Python para procesamiento de datos y archivos.",
+    "description": [
+      "Librería en Python orientada al procesamiento y análisis de archivos, arreglos y estructuras de datos.",
+      "Facilita la automatización de tareas relacionadas con la manipulación de información.",
+      "Enfocada en ser ligera, modular y fácil de integrar con otros proyectos Python."
+    ],
+    "technologies": ["Python"],
+    "github": "https://github.com/kazp058/Docpy",
+    "image": "/projects/docpy.png"
+  },
+  {
+    "id": 2,
+    "name": "Pitka",
+    "shortDescription": "Chatbot para el Club de Robótica de la ESPOL en Discord.",
+    "description": [
+      "Desarrollado para la comunidad del Club de Robótica de la ESPOL.",
+      "Integra funciones de gestión, interacción y respuestas automáticas en Discord.",
+      "Sirve como herramienta de soporte para estudiantes y actividades del club."
+    ],
+    "technologies": ["Python", "Discord.py"],
+    "github": "https://github.com/kazp058/PITKA",
+    "image": "/projects/pitka.png"
+  },
+  {
+    "id": 3,
+    "name": "Algoritmos Geneticos",
+    "shortDescription": "Juego con IA basada en algoritmos genéticos.",
+    "description": [
+      "Juego experimental que utiliza algoritmos genéticos para aprender a resolver el reto sin intervención humana.",
+      "Presentado en PyWeekend, donde obtuvo el 1er lugar en su categoría.",
+      "Explora conceptos de inteligencia artificial evolutiva aplicada al entretenimiento digital."
+    ],
+    "technologies": ["Python", "NumPy", "Pygame"],
+    "github": "https://github.com/kazp058/AlgoritmosGeneticos",
+    "image": "/projects/algoritmos-geneticos.png"
+  },
+  {
+    "id": 4,
+    "name": "Automail",
+    "shortDescription": "Automatización de certificados y envío masivo por correo.",
+    "description": [
+      "Genera certificados personalizados de asistencia a eventos.",
+      "Automatiza el envío masivo de certificados por correo electrónico.",
+      "Reduce significativamente el tiempo de gestión administrativa en eventos académicos y corporativos."
+    ],
+    "technologies": ["Python", "SMTP", "Pandas"],
+    "github": "https://github.com/kazp058/automail",
+    "image": "/projects/automail.png"
+  },
+  {
+    "id": 5,
+    "name": "CertDepo",
+    "shortDescription": "Plataforma web para gestión y envío de certificados.",
+    "description": [
+      "Permite almacenar y administrar certificados digitales.",
+      "Genera claves únicas para validar la autenticidad de cada documento.",
+      "Facilita el envío automatizado de certificados vía correo electrónico.",
+      "Desplegado en Google Cloud, con integración de múltiples lenguajes y tecnologías.",
+      "Soporta una arquitectura híbrida entre backend PHP y utilidades en Python/Shell."
+    ],
+    "technologies": ["PHP", "JavaScript", "Python", "Shell", "CSS", "MySQL", "Google Cloud"],
+    "github": "https://github.com/kazp058/CertDepo",
+    "image": "/projects/certdepo.png"
+  },
+  {
+    "id": 6,
+    "name": "Pic.io",
+    "shortDescription": "Administrador de fotos con etiquetas y multiusuario.",
+    "description": [
+      "Aplicación de escritorio con interfaz JavaFX para gestión de fotografías.",
+      "Permite crear cuadros de etiquetado sobre rostros y añadir comentarios.",
+      "Incluye soporte para múltiples usuarios y organización avanzada de fotos.",
+      "Diseñado como herramienta de clasificación y colaboración visual."
+    ],
+    "technologies": ["Java", "JavaFX", "SQLite"],
+    "github": "https://github.com/kazp058/Pic.io",
+    "image": "/projects/picio.png"
+  },
+  {
+    "id": 7,
+    "name": "Battleship",
+    "shortDescription": "Versión en Assembly del clásico juego Batalla Naval.",
+    "description": [
+      "Implementación en Assembly del juego Batalla Naval adaptado a un tablero 7x7.",
+      "La flota (portaviones, crucero y submarino) se genera aleatoriamente en cada partida.",
+      "El jugador dispone de hasta 21 intentos para hundir todos los barcos enemigos.",
+      "Incluye reinicio de partida y salida rápida mediante combinación de teclas.",
+      "Ejercicio para afianzar conocimientos de bajo nivel en programación Assembly."
+    ],
+    "technologies": ["Assembly (x86)"],
+    "github": "https://github.com/kazp058/Battleship",
+    "image": "/projects/battleship.png"
+  },
+  {
+    "id": 8,
+    "name": "Soccer Scrapper",
+    "shortDescription": "Scraping de partidos y simulación logística con algoritmos greedy.",
+    "description": [
+      "Recolecta datos de partidos de fútbol a través de scraping con Selenium.",
+      "Simula la logística de desplazamientos entre partidos utilizando algoritmos greedy.",
+      "Optimiza rutas y calcula el número mínimo de vehículos y recursos necesarios.",
+      "Ejemplo práctico de análisis de datos deportivos y optimización combinatoria."
+    ],
+    "technologies": ["Python", "Selenium", "Pandas"],
+    "github": "https://github.com/kazp058/Soccer-Scrapper",
+    "image": "/projects/soccer-scrapper.png"
+  },
+  {
+    "id": 9,
+    "name": "cuadratic bezier curves comparisong algorithm",
+    "shortDescription": "Algoritmo de clustering para curvas de Bézier.",
+    "description": [
+      "Permite combinar y analizar curvas cuadráticas de Bézier.",
+      "Utiliza clustering (k-means) para identificar similitudes entre curvas.",
+      "Genera una curva promedio aproximada representativa del conjunto.",
+      "Ejemplo de aplicación matemática de algoritmos de machine learning."
+    ],
+    "technologies": ["Python", "scikit-learn", "NumPy"],
+    "github": "https://github.com/kazp058/cuadratic_bezier_curves_comparisong_algorithm",
+    "image": "/projects/bezier-curves.png"
+  },
+  {
+    "id": 10,
+    "name": "TickAndToe",
+    "shortDescription": "Juego de tres en raya con IA y múltiples modos.",
+    "description": [
+      "Juego clásico de tres en raya implementado en Java.",
+      "Incluye inteligencia artificial basada en árboles de decisión.",
+      "Ofrece modos de juego: jugador vs jugador, jugador vs IA o IA vs IA.",
+      "El sistema puede aconsejar al jugador sobre el mejor movimiento disponible."
+    ],
+    "technologies": ["Java", "Swing"],
+    "github": "https://github.com/kazp058/TickAndToe",
+    "image": "/projects/tickandtoe.png"
+  },
+  {
+    "id": 11,
+    "name": "kzhangcv",
+    "shortDescription": "Sitio web CV con React, Vite y Tailwind, con globo 3D interactivo.",
+    "description": [
+      "Sitio web personal y portafolio profesional.",
+      "Construido con React, Vite y Tailwind CSS para máxima eficiencia y rendimiento.",
+      "Incluye un globo 3D interactivo desarrollado con Globe.gl.",
+      "Diseñado para resaltar trayectoria, experiencia profesional y proyectos clave.",
+      "Arquitectura modular con componentes reutilizables y diseño responsive."
+    ],
+    "technologies": ["JavaScript", "React", "Vite", "Tailwind", "Globe.gl", "HTML", "CSS"],
+    "github": "https://github.com/kazp058/kzhang-cv",
+    "image": "/projects/kzhangcv.png"
+  }
+]

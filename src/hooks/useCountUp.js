@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
 
 export default function useCountUp(target, duration = 1000) {
-  const [value, setValue] = useState(0);       // empieza en 0
-  const prevTarget = useRef(0);                // recuerda el valor previo
+  const [value, setValue] = useState(0);     
+  const prevTarget = useRef(0);          
 
   useEffect(() => {
     let startTime;
@@ -17,7 +17,7 @@ export default function useCountUp(target, duration = 1000) {
       setValue(current);
 
       if (progress < 1) requestAnimationFrame(step);
-      else prevTarget.current = target;  // actualiza valor previo al final
+      else prevTarget.current = target; 
     };
 
     requestAnimationFrame(step);

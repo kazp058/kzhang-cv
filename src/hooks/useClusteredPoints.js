@@ -2,9 +2,8 @@ import { useMemo } from 'react';
 import * as d3 from 'd3-array';
 
 /**
- * Hook para generar clusters de puntos de experiencias para Globe.gl
- * @param {Array} data - Array de experiencias con lat/lng
- * @param {number} distanceThreshold - distancia mínima para agrupar puntos
+ * @param {Array} data
+ * @param {number} distanceThreshold
  */
 export function useClusteredPoints(data, distanceThreshold = 0.5) {
   return useMemo(() => {
