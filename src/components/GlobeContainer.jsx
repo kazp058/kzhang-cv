@@ -49,8 +49,8 @@ export default function GlobeContainer({ experiences, matches, selected, setSele
 
     if (!globeInstance.current) {
       const g = Globe()(globeEl.current)
-        .globeImageUrl('http://shadedrelief.com/natural3/ne3_data/8192/textures/4_no_ice_clouds_mts_8k.jpg')
-        .bumpImageUrl('http://shadedrelief.com/natural3/ne3_data/8192/elev_bump_8k.jpg')
+        .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
+        .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
         .showAtmosphere(false)
         .atmosphereColor('#3fa9f5')
         .pointOfView({ lat: 20, lng: 0, altitude: 1.8 })
