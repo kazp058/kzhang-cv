@@ -15,7 +15,7 @@ export default function PresentationLayout({ currentSection }) {
         muted
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
-        <source src="/officiating-16mb.mp4" type="video/mp4" />
+        <source src="${import.meta.env.BASE_URL}officiating-16mb.mp4" type="video/mp4" />
         Tu navegador no soporta el video.
       </video>
 
@@ -36,7 +36,7 @@ export default function PresentationLayout({ currentSection }) {
             <MailOutlineIcon className="w-5 h-5" /> Contacto
           </a>
 
-          <a href="/Kevin_CV.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary">
+          <a href="${import.meta.env.BASE_URL}Kevin_CV.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary">
             <DownloadIcon className="w-5 h-5" /> Descargar CV
           </a>
         </div>
