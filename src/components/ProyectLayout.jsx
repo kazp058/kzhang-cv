@@ -47,7 +47,7 @@ export default function ProjectLayout() {
 
   const getProjectImage = (project) => {
     // intenta cargar imagen específica, sino usa default
-    const imagePath = `${import.meta.env.BASE_URL}${project.id}.jpg`;
+    const imagePath = `../assets/${project.id}.jpg`;
     return imagePath;
   };
 
@@ -90,7 +90,7 @@ export default function ProjectLayout() {
                       <>
                         <img
                           src={getProjectImage(project)}
-                          onError={(e) => { e.target.onerror = null; e.target.src = "${import.meta.env.BASE_URL}default.png"; }}
+                          onError={(e) => { e.target.onerror = null; e.target.src = "../assets/default.png"; }}
                           alt={project.name}
                           className="w-full h-48 object-cover rounded-md mb-4"
                         />

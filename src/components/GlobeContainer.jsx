@@ -49,8 +49,8 @@ export default function GlobeContainer({ experiences, matches, selected, setSele
 
     if (!globeInstance.current) {
       const g = Globe()(globeEl.current)
-        .globeImageUrl('${import.meta.env.BASE_URL}4_no_ice_clouds_mts_8k.jpg')
-        .bumpImageUrl('${import.meta.env.BASE_URL}elev_bump_8k.jpg')
+        .globeImageUrl('../assets/4_no_ice_clouds_mts_8k.jpg')
+        .bumpImageUrl('../assets/elev_bump_8k.jpg')
         .showAtmosphere(false)
         .atmosphereColor('#3fa9f5')
         .pointOfView({ lat: 20, lng: 0, altitude: 1.8 })
