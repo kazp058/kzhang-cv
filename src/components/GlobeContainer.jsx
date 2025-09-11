@@ -49,8 +49,8 @@ export default function GlobeContainer({ experiences, matches, selected, setSele
 
     if (!globeInstance.current) {
       const g = Globe()(globeEl.current)
-        .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
-        .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+        .globeImageUrl(`${import.meta.env.BASE_URL}assets/4_no_ice_clouds_mts_8k.jpg`)
+        .bumpImageUrl(`${import.meta.env.BASE_URL}assets/elev_bump_8k.jpg`)
         .showAtmosphere(false)
         .atmosphereColor('#3fa9f5')
         .pointOfView({ lat: 20, lng: 0, altitude: 1.8 })
@@ -75,7 +75,7 @@ export default function GlobeContainer({ experiences, matches, selected, setSele
         })
         .pointLat(d => d.lat)
         .pointLng(d => d.lng)
-        .pointAltitude(d => (d.type === 'experience' ? 0.02  : 0.01))
+        .pointAltitude(d => (d.type === 'experience' ? 0.02 : 0.01))
         .pointRadius(d => (d.type === 'experience' ? 0.15 : 0.1))
         .pointLabel(d => {
           if (d.type === 'experience') {
